@@ -36,3 +36,32 @@ function sortNumber(num) {
     return Number(arr.join(""))
 }
 
+// Write a function mostLetterWord that accepts a sentence string and a character as arguments.
+// The function should return the word of the sentence that contains the character the most number
+// of times. You can assume that the sentence contains at least one word. If there is a tie, return
+// the word that appears earlier in the sentence.
+
+function mostLetterWord(str, char) {
+    let arr = str.split(" ")
+    let n = arr.length
+    let max = 0;
+    let index;
+    for (let i = 0; i < n; i++) {
+        let smallArr = arr[i].split("")
+        let count = 0;       
+        for (let j = 0; j < smallArr.length; j++) {
+            if(smallArr[j] == char)
+                count++
+        }
+        if (count > max) {
+            max = count
+            index = i
+        }  
+    }
+    return arr[index]
+}
+
+console.log(mostLetterWord('she received an award for excellence in science', 'e')); // 'excellence'
+console.log(mostLetterWord('she received an award for excellence in science', 'a')); // 'award'
+console.log(mostLetterWord('I hope sophomore year comes soon', 'o')); // 'sophomore'
+console.log(mostLetterWord('I hope sophomore year comes soon', 's')); // 'sophomore'
